@@ -5,7 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 
 function FaqComponent() {
   return (
-    <div className="faq">
+    <div className="faq" id="faq">
       <Container>
         <Row className="row-faq">
           <Col className="col-5">

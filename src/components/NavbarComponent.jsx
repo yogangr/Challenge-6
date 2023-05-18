@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import LogoComponent from "./LogoComponent";
 import Button from "react-bootstrap/Button";
+import { HashLink } from "react-router-hash-link";
 
 function NavbarComponent() {
   return (
@@ -14,17 +15,25 @@ function NavbarComponent() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#service" className="me-3">
-              Our Service
+            <Nav.Link className="me-3">
+              <HashLink className="haslink" to={"/#service"}>
+                Our Service
+              </HashLink>
             </Nav.Link>
-            <Nav.Link href="#whyus" className="me-3">
-              Why Us
+            <Nav.Link className="me-3">
+              <HashLink className="haslink" to={"/#whyus"}>
+                Why Us
+              </HashLink>
             </Nav.Link>
-            <Nav.Link href="#testimonial" className="me-3">
-              Testimonial
+            <Nav.Link className="me-3">
+              <HashLink className="haslink" to={"/#testimonial"}>
+                Testimonial
+              </HashLink>
             </Nav.Link>
-            <Nav.Link href="#faq" className="me-3">
-              FAQ
+            <Nav.Link className="me-3">
+              <HashLink className="haslink" to={"/#faq"}>
+                FAQ
+              </HashLink>
             </Nav.Link>
           </Nav>
           <Button className="btn" variant="success">

@@ -7,12 +7,9 @@ import axios from "axios";
 
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
-import HeroComponent from "./components/HeroComponent";
-import ServiceComponent from "./components/ServiceComponent";
-import WhyUsComponent from "./components/WhyUsComponent";
-import TestimoniComponent from "./components/TestimoniComponent";
-import BannerComponent from "./components/BannerComponent";
-import FaqComponent from "./components/FaqComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Cars from "./pages/Cars";
 
 // export default class App extends Component {
 //   render() {
@@ -79,14 +76,17 @@ import FaqComponent from "./components/FaqComponent";
 
 function App() {
   return (
-    <div>
-      <HeroComponent />
-      <ServiceComponent />
-      <WhyUsComponent />
-      <TestimoniComponent />
-      <BannerComponent />
-      <FaqComponent />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="car">
+            <Route index element={<Cars />} />
+          </Route>
+        </Route>
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -40,6 +40,17 @@
   margin-right: 50px;
 }
 
+.haslink {
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+}
+
+.haslink:hover {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
 /* Navbar end */
 
 /* Hero */
@@ -258,7 +269,7 @@
 
 /* FAQ */
 .faq {
-  height: 500px;
+  height: 400px;
   margin-top: 100px;
 }
 
@@ -302,6 +313,135 @@
   line-height: 20px;
 }
 /* FAQ */
+
+/* Footer */
+.footer {
+  margin-bottom: 50px;
+  margin-top: 100px;
+}
+
+.footer-1 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer-2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  padding-left: 20px;
+}
+
+.footer-2 a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-2 a:hover {
+  text-decoration: none;
+  color: #0d28a6;
+}
+
+.footer-3 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer-4 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+/* Footer */
+
+/* Search Bar */
+.search-box {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 100px;
+}
+
+.form p {
+  font-size: 14px;
+}
+
+.input-group {
+  width: 21%;
+}
+
+.input-group > .form-control,
+.input-group > .form-select {
+  border-radius: 3px !important;
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: #3c3c3c;
+}
+
+.item {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.form-control:hover,
+.form-control:focus,
+.form-select:hover,
+.form-select:focus {
+  border: 1px solid #5cb85f;
+  box-shadow: none;
+}
+
+.button .btn-search {
+  width: 100%;
+  background: #5cb85f;
+  border-radius: 3px;
+  border-style: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  height: 6vh;
+  align-self: end;
+}
+
+.button .btn.selected {
+  background-color: #42a045;
+  color: white;
+}
+
+.button .btn:hover {
+  background-color: #42a045;
+  color: white;
+}
+
+.datepicker {
+  background-color: white;
+  color: black;
+  border-radius: 3px !important;
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: 37px;
+  border: 1px solid rgba(0, 0, 0, 0.285);
+}
+/* Search Bar */
 
 @media (max-width: 768px) {
   .hero {

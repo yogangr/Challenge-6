@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function CtaComponent() {
   return (
     <div className="cta">
-      <Button variant="success" className="btn" as={Link} to="/car">
+      <Button variant="success" className="btn" as={Link} to="/cars">
         Mulai Sewa Mobil
       </Button>
     </div>

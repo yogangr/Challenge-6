@@ -4,7 +4,6 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { Container } from "react-bootstrap";
-// import NavNext from "../assets/images/next_button.png";
 import Pp1 from "../assets/images/pp1.png";
 import Pp2 from "../assets/images/pp2.png";
 import Rate from "../assets/images/Rate.png";
@@ -24,8 +23,8 @@ function TestimoniComponent() {
           items={1}
           nav
           navText={[
-            "<img src='../assets/images/prev_button.png'>",
-            "<img src='assets/icon/next_button.png'>",
+            "<img src='src/assets/images/prev_button.png'>",
+            "<img src='src/assets/images/next_button.png'>",
           ]}
           dots={false}
           stagePadding={425}

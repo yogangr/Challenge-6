@@ -1,78 +1,9 @@
 /* eslint-disable react/jsx-key */
 import "./App.css";
-// eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from "react";
-// eslint-disable-next-line no-unused-vars
-import axios from "axios";
-
-// eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cars from "./pages/Cars";
-
-// export default class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <NavbarComponent />
-//         <HeroComponent />
-//       </div>
-//     );
-//   }
-// }
-
-// function App() {
-//   //define state
-//   const [posts, setPosts] = useState([]);
-
-//   //useEffect hook
-//   useEffect(() => {
-//     //panggil method "fetchData"
-//     fectData();
-//   }, []);
-
-//   //function "fetchData"
-//   const fectData = async () => {
-//     //fetching
-//     const response = await axios.get(
-//       "https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
-//     );
-//     //get response data
-//     const data = await response.data;
-
-//     //assign response data to state "posts"
-//     setPosts(data);
-//   };
-
-//   const CarsList = () => {
-//     return posts.map((cars, i) => {
-//       return (
-//         <div className="card" key={i}>
-//           <img className="Car-image" src={cars.image} alt="" />
-//           <div className="Car-manufacture">Manufacture: {cars.manufacture}</div>
-//           <div className="Car-rent">Biaya Rental: Rp{cars.rentPerDay}</div>
-//           <div className="Car-year">Tahun Rilis: {cars.year}</div>
-//         </div>
-//       );
-//     });
-//   };
-
-//   return (
-//     <>
-//       <div className="App">
-//         <header className="App-header">
-//           <h1>Data Mobil</h1>
-//           <div className="Car-container">
-//             <CarsList />
-//           </div>
-//         </header>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
+import NotFound from "./pages/Cars";
 
 function App() {
   return (
@@ -80,11 +11,11 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="car">
+          <Route path="cars">
             <Route index element={<Cars />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
   );

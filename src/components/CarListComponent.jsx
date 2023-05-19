@@ -61,6 +61,7 @@ function CarListComponent() {
               </div>
               <p className="item-card">Tahun {cars.year}</p>
             </div>
+            <button className="btn-car">Pilih Mobil</button>
           </div>
         );
       });

@@ -1,158 +1,95 @@
 import axios from "axios";
-import SearchBar from "./searchBar";
+
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import * as Icon from "react-bootstrap-icons";
+import SearchCarComponent from "./SearchCarComponent";
+import { Alert } from "react-bootstrap";
 
-const CarSection = () => {
+function CarListComponent() {
   const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [filterData, setFilterData] = useState({});
+  const [value, setValue] = useState("0");
+  const [query, setQuery] = useState([]);
 
-  const findCarFilter = async () => {
-    setLoading(true);
-    try {
-      const data = await axios.get(
-        "https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
+  const handleSubmit = async () => {
+    const data = await axios.get(
+      "https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
+    );
+    const cars = await data.data;
+    if (value === "true") {
+      console.log("a");
+      const selectResult = cars.filter(
+        (car) => car.available === true && car.capacity >= query
       );
-      let newData = data.data;
-      if (
-        !filterData.carName &&
-        !filterData.carCategory &&
-        !filterData.carPrice
-      ) {
-        setCars(newData);
-      } else if (
-        filterData.carName &&
-        !filterData.carCategory &&
-        !filterData.carPrice
-      ) {
-        const selectResult = newData.filter(
-          (val) => val.name?.toLowerCase() === filterData.carName.toLowerCase()
-        );
-        setCars(selectResult);
-      } else if (
-        filterData.carName &&
-        filterData.carCategory &&
-        !filterData.carPrice
-      ) {
-        const selectResult = newData.filter(
-          (val) =>
-            val.name?.toLowerCase() === filterData.carName.toLowerCase() &&
-            val.category?.toLowerCase() === filterData.carCategory.toLowerCase()
-        );
-        setCars(selectResult);
-      } else {
-        if (filterData.carPrice === "400000") {
-          console.log("a");
-          const selectResult = newData.filter(
-            (val) =>
-              val.name?.toLowerCase() === filterData.carName.toLowerCase() &&
-              val.category?.toLowerCase() ===
-                filterData.carCategory.toLowerCase() &&
-              filterData.carPrice >= val.price
-          );
-          setCars(selectResult);
-        } else if (filterData.carPrice === "400000-600000") {
-          const selectResult = newData.filter(
-            (val) =>
-              val.name?.toLowerCase() === filterData.carName.toLowerCase() &&
-              val.category?.toLowerCase() ===
-                filterData.carCategory.toLowerCase() &&
-              val.price >= 400000 &&
-              val.price <= 600000
-          );
-          setCars(selectResult);
-        } else {
-          const selectResult = newData.filter(
-            (val) =>
-              val.name?.toLowerCase() === filterData.carName.toLowerCase() &&
-              val.category?.toLowerCase() ===
-                filterData.carCategory.toLowerCase() &&
-              val.price >= 600000
-          );
-          setCars(selectResult);
-        }
-      }
-    } catch (error) {
-      console.log(error);
+      setCars(selectResult);
+    } else if (value === "false") {
+      const selectResult = cars.filter(
+        (car) => car.available === false && car.capacity >= query
+      );
+      setCars(selectResult);
     }
-    setLoading(false);
   };
 
-  const handleSubmit = () => {
-    findCarFilter();
+  console.log(cars.length);
+
+  const CarsList = () => {
+    if (cars.length > 0) {
+      return cars.map((cars, i) => {
+        return (
+          <div className="car-list" key={i}>
+            <img className="car-image" src={cars.image} alt="" />
+            <div className="car-manufacture">
+              {cars.manufacture}/{cars.model}
+            </div>
+            <div className="car-rent">Rp {cars.rentPerDay} / hari</div>
+            <div className="car-desc">{cars.description}</div>
+            <div className="item-grup">
+              <div>
+                <Icon.People className="icon" aria-hidden="true" />
+              </div>
+              <p className="item-card">{cars.capacity} Orang</p>
+            </div>
+            <div className="item-grup">
+              <div>
+                <Icon.Gear className="icon" aria-hidden="true" />
+              </div>
+              <p className="item-card">{cars.transmission}</p>
+            </div>
+            <div className="item-grup">
+              <div>
+                <Icon.Calendar4 className="icon" aria-hidden="true" />
+              </div>
+              <p className="item-card">Tahun {cars.year}</p>
+            </div>
+          </div>
+        );
+      });
+    } else if (query > 6) {
+      return (
+        <Alert className="alert" variant="danger">
+          Mobil Tidak Tersedia!
+        </Alert>
+      );
+    }
   };
 
   return (
-    <Fragment>
-      <SearchBar
-        filterData={filterData}
+    <>
+      <SearchCarComponent
+        value={value}
         handleSubmit={handleSubmit}
-        setFilterData={setFilterData}
+        setValue={setValue}
+        setQuery={setQuery}
       />
-      <section id="cars">
-        <div className="container">
-          <div className="row">
-            {!loading ? (
-              cars.length ? (
-                cars.map((car, index) => {
-                  return (
-                    <div key={index} className="col-lg-4 col-md-6">
-                      <div
-                        className="card p-3 d-flex flex-column justify-content-between"
-                        style={{ height: "100%" }}
-                      >
-                        {car.image ? (
-                          <img
-                            src={car.image}
-                            alt=""
-                            style={{ width: "100%" }}
-                          />
-                        ) : (
-                          <img
-                            src="/Image/white.png"
-                            alt=""
-                            style={{ width: "100%" }}
-                          />
-                        )}
-
-                        <div>
-                          <p>{car.name}</p>
-                          {car.price ? (
-                            <h5>
-                              Rp {car.price.toLocaleString("en-US")}/ Hari
-                            </h5>
-                          ) : (
-                            <h5>Rp. 0</h5>
-                          )}
-                          <p className="fw-bold">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua.{" "}
-                          </p>
-                          <a
-                            href={`/car/${car.id}`}
-                            className="btn btn-success"
-                            style={{ width: "100%" }}
-                          >
-                            Pilih Mobil
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })
-              ) : cars.length === 0 ? null : (
-                <h1>Mobil Tidak Ditemukan</h1>
-              )
-            ) : (
-              <h1 className="text-center">Loading....</h1>
-            )}
+      <div className="App">
+        <header className="App-header">
+          <div className="container car-container">
+            <CarsList />
           </div>
-        </div>
-      </section>
-    </Fragment>
+        </header>
+      </div>
+    </>
   );
-};
+}
 
-export default CarSection;
+export default CarListComponent;

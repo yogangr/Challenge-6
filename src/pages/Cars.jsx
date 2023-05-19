@@ -2,13 +2,13 @@
 import React from "react";
 import CarHeroComponent from "../components/CarHeroComponent";
 import FooterComponent from "../components/FooterComponent";
-import SearchCarComponent from "../components/SearchCarComponent";
+import CarListComponent from "../components/CarListComponent";
 
 function Cars() {
   return (
     <div>
       <CarHeroComponent />
-      <SearchCarComponent />
+      <CarListComponent />
       <FooterComponent />
     </div>
   );
